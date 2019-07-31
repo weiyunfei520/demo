@@ -21,7 +21,7 @@ class BooksView(View):
                 'btitle': book.btitle,
                 'bpub_date': book.bpub_date,
                 'bread': book.bread,
-                'becomment': book.bcomment
+                'bcomment': book.bcomment
             })
         return JsonResponse({'blist': book_list})
 
@@ -43,7 +43,7 @@ class BooksView(View):
             'btitle': book.btitle,
             'bpub_date': book.bpub_date,
             'bread': book.bread,
-            'becomment': book.bcomment
+            'bcomment': book.bcomment
         })
 
 
@@ -69,5 +69,31 @@ class BookView(View):
             'btitle': book.btitle,
             'bpub_date': book.bpub_date,
             'bread': book.bread,
-            'becomment': book.bcomment
+            'bcomment': book.bcomment
+        })
+
+    def put(self, request, pk):
+        """
+        更新图书
+        :param request:
+        :param pk:
+        :return:
+        """
+        data = json.loads(request.body.decode())
+        btitle = data.get('btitle')
+        if btitle is None:
+            return JsonResponse({'error': '缺少btitle字段'}, status=400)
+        if len(btitle) > 20:
+            return JsonResponse({'error': 'btitle子盾过长'}, status=400)
+        BookInfo.objects.filter(id=pk).update(**data)
+        try:
+            book = BookInfo.objects.get(id=pk)
+        except:
+            return JsonResponse({'error':'图书不存在'}, status=400)
+        return JsonResponse({
+            'id': book.id,
+            'btitle': book.btitle,
+            'bpub_date': book.bpub_date,
+            'bread': book.bread,
+            'bcomment': book.bcomment
         })
