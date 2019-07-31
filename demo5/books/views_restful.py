@@ -6,7 +6,7 @@ from django.views import View
 from books.models import BookInfo
 
 
-class BookView(View):
+class BooksView(View):
     def get(self, request):
         """
         获取所有图书
@@ -47,3 +47,27 @@ class BookView(View):
         })
 
 
+class BookView(View):
+    """
+    获取单一图书
+    更新图书
+    删除图书
+    """
+
+    def get(self, request, pk):
+        """
+        获取单一图书
+        :param request:
+        :return:
+        """
+        try:
+            book = BookInfo.objects.get(id=pk)
+        except:
+            return JsonResponse({'error': '图书不存在'}, status=400)
+        return JsonResponse({
+            'id': book.id,
+            'btitle': book.btitle,
+            'bpub_date': book.bpub_date,
+            'bread': book.bread,
+            'becomment': book.bcomment
+        })

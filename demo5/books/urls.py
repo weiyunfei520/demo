@@ -7,4 +7,5 @@ urlpatterns = [
     # url(r'^heros/$', views.HeroView.as_view()),
     # 前后端分离
     url(r'^books/$', views_restful.BookView.as_view()),
+    url(r'^books/(?P<pk>\d+)/$', views_restful.BookView.as_view()),
 ]
