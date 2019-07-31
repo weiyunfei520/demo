@@ -97,3 +97,22 @@ class BookView(View):
             'bread': book.bread,
             'bcomment': book.bcomment
         })
+
+    def delete(self, request, pk):
+        """
+        删除图书
+        :param request:
+        :param pk:
+        :return:
+        """
+        try:
+            book = BookInfo.objects.get(id=pk)
+        except:
+            return JsonResponse({'error': '图书不存在'}, status=400)
+        #物理删除
+        book.delete()
+        #逻辑删除
+        # book.is_delete = True
+        # book.save()
+        return JsonResponse({})
+
