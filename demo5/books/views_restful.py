@@ -112,7 +112,7 @@ class BookView(View):
         #物理删除
         book.delete()
         #逻辑删除
-        # book.is_delete = True
-        # book.save()
+        book.is_delete = True
+        book.save()
         return JsonResponse({})
 
