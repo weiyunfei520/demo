@@ -8,7 +8,7 @@ class BookInfoSerializer(serializers.Serializer):
     """
     # id = serializers.IntegerField()
     btitle = serializers.CharField(max_length=20, min_length=4)
-    bpub_date = serializers.DateField() # read_only=True表明该字段只参与序列化
+    bpub_date = serializers.DateField(required=False) # read_only=True表明该字段只参与序列化
     bread = serializers.IntegerField(max_value=100, min_value=1, write_only=True)  # write_only=True表明该字段只参与反序列化
     bcomment = serializers.IntegerField(default=0, write_only=True)
 
@@ -19,6 +19,16 @@ class BookInfoSerializer(serializers.Serializer):
     # 根据另外一个序列化器返回相应的嵌套字段
     # heros = HeroInfoSerializer(read_only=True, many=True)
 
+    # 单一字段验证方法
+    def validate_btitle(self, attrs):
+        """
+        :param attrs:接受要验证的字段数据
+        :return:
+        """
+        if attrs == 'python':
+            raise serializers.ValidationError('书名不能为python')
+        # 注意！！！！ 验证完成之后，一定要返回验证后的数据
+        return attrs
 
 
 class HeroInfoSerializer(serializers.Serializer):
