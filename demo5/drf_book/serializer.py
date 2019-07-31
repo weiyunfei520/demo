@@ -42,14 +42,23 @@ class BookInfoSerializer(serializers.Serializer):
     def create(self, validated_data):
         """
         保存数据
-        :param validated_data:
+        :param validated_data: 接受验证后字段数据 字典
         :return:
         """
         # 编写保存数据库的业务逻辑
         book = BookInfo.objects.create(**validated_data)
         # 返回保存后的数据对象
         return book
-
+    # 封装更新方法
+    def update(self, instance, validated_data):
+        """
+        :param instance: 接受的是更新的数据对象
+        :param validated_data: 接受验证后字段数据 字典
+        :return:
+        """
+        instance.btitle = validated_data['btitle']
+        instance.save()
+        return instance
 class HeroInfoSerializer(serializers.Serializer):
     """
     英雄序列化器

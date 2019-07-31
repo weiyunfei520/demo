@@ -102,23 +102,36 @@ class BookView(View):
         :return:
         """
         data = json.loads(request.body.decode())
-        btitle = data.get('btitle')
-        if btitle is None:
-            return JsonResponse({'error': '缺少btitle字段'}, status=400)
-        if len(btitle) > 20:
-            return JsonResponse({'error': 'btitle子盾过长'}, status=400)
-        BookInfo.objects.filter(id=pk).update(**data)
+        # btitle = data.get('btitle')
+        # if btitle is None:
+        #     return JsonResponse({'error': '缺少btitle字段'}, status=400)
+        # if len(btitle) > 20:
+        #     return JsonResponse({'error': 'btitle子盾过长'}, status=400)
+        # BookInfo.objects.filter(id=pk).update(**data)
+        # try:
+        #     book = BookInfo.objects.get(id=pk)
+        # except:
+        #     return JsonResponse({'error': '图书不存在'}, status=400)
+        # return JsonResponse({
+        #     'id': book.id,
+        #     'btitle': book.btitle,
+        #     'bpub_date': book.bpub_date,
+        #     'bread': book.bread,
+        #     'bcomment': book.bcomment
+        # })
         try:
             book = BookInfo.objects.get(id=pk)
         except:
-            return JsonResponse({'error': '图书不存在'}, status=400)
-        return JsonResponse({
-            'id': book.id,
-            'btitle': book.btitle,
-            'bpub_date': book.bpub_date,
-            'bread': book.bread,
-            'bcomment': book.bcomment
-        })
+            return JsonResponse({'error': '!!!!'}, status=400)
+        # 验证数据 更新数据时需要在初始化时传递更新对象
+        ser = BookInfoSerializer(instance=book, data=data)
+        try:
+            ser.is_valid(raise_exception=True)
+        except:
+            return JsonResponse({'error': ser.errors}, status=400)
+        ser.save()
+        return JsonResponse(ser.data)
+
 
     def delete(self, request, pk):
         """
