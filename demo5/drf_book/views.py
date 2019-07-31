@@ -55,11 +55,17 @@ class BooksView(View):
         # })
         ser = BookInfoSerializer(data=data)
         # is_valid() 序列化器提供的验证方法
-        ser.is_valid()
+        # ser.is_valid()
+        try:
+            ser.is_valid(raise_exception=True) # 验证失败抛出异常
         # 获取验证状态信息
-        data = ser.errors
-        print(data)
-        return JsonResponse({'message': 'ok'})
+        # data = ser.errors
+        except:
+            return JsonResponse({'error': ser.errors}, status=400)
+        # print(data)
+        # 保存数据
+        ser.save()
+        return JsonResponse(ser.data)
 
 class BookView(View):
     """

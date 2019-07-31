@@ -38,6 +38,17 @@ class BookInfoSerializer(serializers.Serializer):
         if attrs['bread'] > attrs['bcomment']:
             raise serializers.ValidationError('阅读量大于评论量')
         return attrs
+    #封装保存方法
+    def create(self, validated_data):
+        """
+        保存数据
+        :param validated_data:
+        :return:
+        """
+        # 编写保存数据库的业务逻辑
+        book = BookInfo.objects.create(**validated_data)
+        # 返回保存后的数据对象
+        return book
 
 class HeroInfoSerializer(serializers.Serializer):
     """

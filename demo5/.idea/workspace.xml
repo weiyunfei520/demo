@@ -4,6 +4,7 @@
     <list default="true" id="69ff191e-2a23-4e0a-afe2-d25571cf0d98" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drf_book/serializer.py" afterPath="$PROJECT_DIR$/drf_book/serializer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drf_book/views.py" afterPath="$PROJECT_DIR$/drf_book/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,11 +68,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="serializer.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="serializer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drf_book/serializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -79,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drf_book/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="57" column="22" lean-forward="true" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+            <state relative-caret-position="206">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -127,8 +128,8 @@
         <option value="$PROJECT_DIR$/demo5/settings.py" />
         <option value="$PROJECT_DIR$/drf_book/urls.py" />
         <option value="$PROJECT_DIR$/books/models.py" />
-        <option value="$PROJECT_DIR$/drf_book/views.py" />
         <option value="$PROJECT_DIR$/drf_book/serializer.py" />
+        <option value="$PROJECT_DIR$/drf_book/views.py" />
       </list>
     </option>
   </component>
@@ -582,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564578569358</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="多个字段验证方法使用">
+      <created>1564578857058</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1564578857058</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -627,7 +635,8 @@
     <MESSAGE value="父表嵌套子表和子表嵌套父表返回" />
     <MESSAGE value="反序列化的字段选项验证使用" />
     <MESSAGE value="单一字段验证方法使用" />
-    <option name="LAST_COMMIT_MESSAGE" value="单一字段验证方法使用" />
+    <MESSAGE value="多个字段验证方法使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="多个字段验证方法使用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -638,9 +647,9 @@
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/drf_book/views.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="19" />
+          <url>file://$PROJECT_DIR$/drf_book/serializer.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -650,7 +659,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1037,6 +1046,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/meiduo/lib/python3.5/site-packages/rest_framework/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/meiduo/lib/python3.5/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -1048,35 +1065,27 @@
     <entry file="file://$USER_HOME$/.virtualenvs/meiduo/lib/python3.5/site-packages/django/views/generic/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/meiduo/lib/python3.5/site-packages/rest_framework/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="488" column="0" lean-forward="false" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drf_book/serializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/drf_book/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="57" column="22" lean-forward="true" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+        <state relative-caret-position="206">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drf_book/serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
