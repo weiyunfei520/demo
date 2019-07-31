@@ -29,7 +29,15 @@ class BookInfoSerializer(serializers.Serializer):
             raise serializers.ValidationError('书名不能为python')
         # 注意！！！！ 验证完成之后，一定要返回验证后的数据
         return attrs
-
+    # 多个字段验证方法
+    def validate(self, attrs):
+        """
+        :param attrs: 接受多个字段验证数据  是一个字典类型
+        :return:
+        """
+        if attrs['bread'] > attrs['bcomment']:
+            raise serializers.ValidationError('阅读量大于评论量')
+        return attrs
 
 class HeroInfoSerializer(serializers.Serializer):
     """
