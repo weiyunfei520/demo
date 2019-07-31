@@ -71,13 +71,15 @@ class BookView(View):
             book = BookInfo.objects.get(id=pk)
         except:
             return JsonResponse({'error': '图书不存在'}, status=400)
-        return JsonResponse({
-            'id': book.id,
-            'btitle': book.btitle,
-            'bpub_date': book.bpub_date,
-            'bread': book.bread,
-            'bcomment': book.bcomment
-        })
+        ser = BookInfoSerializer(book)
+        # return JsonResponse({
+        #     'id': book.id,
+        #     'btitle': book.btitle,
+        #     'bpub_date': book.bpub_date,
+        #     'bread': book.bread,
+        #     'bcomment': book.bcomment
+        # })
+        return JsonResponse(ser.data)
 
     def put(self, request, pk):
         """
