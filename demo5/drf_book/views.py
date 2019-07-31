@@ -40,19 +40,26 @@ class BooksView(View):
         :return:
         """
         data = json.loads(request.body.decode())
-        btitle = data.get('btitle')
-        if btitle is None:
-            return JsonResponse({'error': '缺少btitle字段'}, status=400)
-        if len(btitle) > 20:
-            return JsonResponse({'error': 'btitle字段过长'}, status=400)
-        book = BookInfo.objects.create(**data)
-        return JsonResponse({
-            'id': book.id,
-            'btitle': book.btitle,
-            'bpub_date': book.bpub_date,
-            'bread': book.bread,
-            'bcomment': book.bcomment
-        })
+        # btitle = data.get('btitle')
+        # if btitle is None:
+        #     return JsonResponse({'error': '缺少btitle字段'}, status=400)
+        # if len(btitle) > 20:
+        #     return JsonResponse({'error': 'btitle字段过长'}, status=400)
+        # book = BookInfo.objects.create(**data)
+        # return JsonResponse({
+        #     'id': book.id,
+        #     'btitle': book.btitle,
+        #     'bpub_date': book.bpub_date,
+        #     'bread': book.bread,
+        #     'bcomment': book.bcomment
+        # })
+        ser = BookInfoSerializer(data=data)
+        # is_valid() 序列化器提供的验证方法
+        ser.is_valid()
+        # 获取验证状态信息
+        data = ser.errors
+        print(data)
+        return JsonResponse({'message': 'ok'})
 
 class BookView(View):
     """

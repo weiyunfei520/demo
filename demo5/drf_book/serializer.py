@@ -7,10 +7,10 @@ class BookInfoSerializer(serializers.Serializer):
     图书序列化器
     """
     # id = serializers.IntegerField()
-    btitle = serializers.CharField()
-    bpub_date = serializers.DateField()
-    bread = serializers.IntegerField()
-    bcomment = serializers.IntegerField()
+    btitle = serializers.CharField(max_length=20, min_length=4)
+    bpub_date = serializers.DateField() # read_only=True表明该字段只参与序列化
+    bread = serializers.IntegerField(max_value=100, min_value=1, write_only=True)  # write_only=True表明该字段只参与反序列化
+    bcomment = serializers.IntegerField(default=0, write_only=True)
 
     # 父表嵌套子表返回 PrimaryKeyRelatedField 嵌套返回id
     # heros = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
