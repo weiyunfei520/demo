@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from . import views, apiviews
+from . import views, apiviews, genericapiviews
 
 urlpatterns = [
     # View
@@ -8,4 +8,7 @@ urlpatterns = [
     # APIView
     url(r'^drf_apiviewbooks/$', apiviews.BooksAPIView.as_view()),
     url(r'^drf_apiviewbooks/(?P<pk>\d+)/$', apiviews.BookAPIView.as_view()),
+    # GenericAPIView
+    url(r'^drf_genericapiviewbooks/$', genericapiviews.BooksGenericAPIView.as_view()),
+    url(r'^drf_genericapiviewbooks/(?P<pk>\d+)/$', genericapiviews.BookGenericAPIView.as_view()),
 ]
