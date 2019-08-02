@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from . import views, apiviews, genericapiviews
+from . import views, apiviews, genericapiviews, modelmixinviews
 
 urlpatterns = [
     # View
@@ -11,4 +11,7 @@ urlpatterns = [
     # GenericAPIView
     url(r'^drf_genericapiviewbooks/$', genericapiviews.BooksGenericAPIView.as_view()),
     url(r'^drf_genericapiviewbooks/(?P<pk>\d+)/$', genericapiviews.BookGenericAPIView.as_view()),
+    # ModelMixinView
+    url(r'^drf_modelmixinviewbooks/$', modelmixinviews.BooksModelMixinView.as_view()),
+    url(r'^drf_modelmixinviewbooks/(?P<pk>\d+)/$', modelmixinviews.BookModelMixinView.as_view()),
 ]
