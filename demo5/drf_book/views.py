@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.views import View
 
 from books.models import BookInfo
-from drf_book.serializer import BookInfoSerializer
+from drf_book.serializer import BookInfoSerializer, BookInfoModelSerializer
 
 
 class BooksView(View):
@@ -29,7 +29,8 @@ class BooksView(View):
         #         'bread': book.bread,
         #         'bcomment': book.bcomment
         #     })
-        ser = BookInfoSerializer(books, many=True)
+        # ser = BookInfoSerializer(books, many=True)
+        ser = BookInfoModelSerializer(books, many=True)
         print(ser.data)
         return JsonResponse({'blist': ser.data})
 
@@ -57,7 +58,7 @@ class BooksView(View):
         # is_valid() 序列化器提供的验证方法
         # ser.is_valid()
         try:
-            ser.is_valid(raise_exception=True) # 验证失败抛出异常
+            ser.is_valid(raise_exception=True)  # 验证失败抛出异常
         # 获取验证状态信息
         # data = ser.errors
         except:
@@ -66,6 +67,7 @@ class BooksView(View):
         # 保存数据
         ser.save()
         return JsonResponse(ser.data)
+
 
 class BookView(View):
     """
@@ -131,7 +133,6 @@ class BookView(View):
             return JsonResponse({'error': ser.errors}, status=400)
         ser.save()
         return JsonResponse(ser.data)
-
 
     def delete(self, request, pk):
         """
